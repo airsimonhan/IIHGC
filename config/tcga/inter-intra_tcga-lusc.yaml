@@ -1,0 +1,55 @@
+
+work_dir: work_dir/inter_intra_stage/tcga_lusc/
+loss: loss.coxph_loss
+n_fold: 5
+dataset: dataset.WSI_Dataset.SlidePatch
+#WSI_data
+center: ['TCGA-LUSC']
+WSI_info_list_file: dataset/WSI_info_list/TCGA-LUSC.json
+WSI_patch_ft_dir: get_feature/WSI_patch_features/{}_2K_sample_threshold/patch_ft
+WSI_patch_coor_dir: get_feature/WSI_patch_features/{}_2K_sample_threshold/patch_coor
+
+clinical: True
+
+H_coors: True 
+# model
+intra_model: model.intra_stage.Model
+intra_model_args:
+  in_channels: 512
+  n_target: 1
+  k_nearest: 5
+  k_threshold: 0.1
+  hiddens: [128,128,128]
+  dropout: 0.3
+  drop_max_ratio: 0.05
+
+intra_weights: work_dir/intra_stage/tcga-lusc/
+
+
+inter_model: model.inter_stage.Model 
+inter_model_args:
+  in_channels: 262
+  label_in: 1
+  label_hiddens: [16,16,16]
+  n_target: 1
+  k_threshold: 0.01 
+  hiddens: [128,128,128] 
+  dropout: 0.3
+  scale: 0.5
+
+
+
+#optim
+weight_decay: 0.0005
+base_lr: 0.01 
+lr_decay_rate: 0.1
+step: 200
+num_epoch: 300
+
+
+
+# training
+device: [0]
+batch_size: 8
+test_batch_size: 8
+
