@@ -98,9 +98,6 @@ class EfficientNetFeautre(nn.Module):
         x = self.model(x)
         return x
 
-
-
-
 def get_parser():
     # parameter priority: command line > config > default
     parser = argparse.ArgumentParser(description='multi-modal survival prediction')

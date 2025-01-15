@@ -108,16 +108,6 @@ def get_full_H_3d(x: torch.Tensor, k_nearest=None,k_threshold=None, largest=Fals
         ones = torch.ones_like(dis_matrix)
         zeros = torch.zeros_like(dis_matrix)
         H_nearest = torch.where(dis_matrix<=min_threshold,ones,zeros) # dis_matrix
-        # max_value_H_nearest, _ = H_nearest.max(1,keepdim=True)
-        # H_nearest = H_nearest / max_value_H_nearest
-        # H_nearest = 1 - H_nearest
-        # H_nearest = torch.where(dis_matrix<=min_threshold,H_nearest,zeros)
-        # indexs = torch.nonzero(H_nearest)
-        # for i in range(len(indexs)):
-        #     index = indexs[i]
-        #     value = H_nearest[index[0],index[1],index[2]]
-
-
         H_nearest_weight = 1-(((H_nearest * norm_dis_matrix).sum(dim=-2)) / H_nearest.sum(dim=-2)) #F.sigmoid
 
     if k_threshold is not None:

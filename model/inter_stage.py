@@ -21,18 +21,15 @@ class HyConv(nn.Module):
         self.reset_parameters()
         self.relu = nn.LeakyReLU(inplace=True)
 
-
     def reset_parameters(self):
         nn.init.xavier_uniform_(self.theta)
         nn.init.zeros_(self.bias)
-
 
     def forward(self, x: torch.Tensor, H: torch.Tensor,mask=None, hyedge_weight=None):
         assert len(x.shape) == 2, 'the input of HyperConv should be N * C'
         # feature transform
         y = einsum('nc,co->no',x,self.theta)
         y = y + self.bias.unsqueeze(0)
-
 
         if hyedge_weight is not None:
             Dv = torch.diag_embed(1.0/(H*hyedge_weight).sum(1))
@@ -52,9 +49,8 @@ class HyConv(nn.Module):
 
         return y
 
-    
 
-class Model(nn.Module):
+class interModel(nn.Module):
     def __init__(self, in_channels, n_target, hiddens,label_in,label_hiddens, scale, k_threshold=None,k_nearest=None,dropout=0.3):
         super().__init__()
         self.drop_out = nn.Dropout(dropout)
@@ -87,7 +83,6 @@ class Model(nn.Module):
         self.mlp_l1.apply(weight_init)
         self.mlp_l2.apply(weight_init)
         self.mlp_l3.apply(weight_init)
-
 
     def forward(self, x, risk, train_fts=None, train_risk=None, attr=None,train_attr=None):
         label = risk 

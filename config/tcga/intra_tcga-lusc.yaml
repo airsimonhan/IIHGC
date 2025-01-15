@@ -1,18 +1,12 @@
-work_dir: work_dir/intra_stage/tcga_lusc/
-loss: loss.coxph_loss
-n_fold: 5
-data_seed: 1
-dataset: dataset.WSI_Dataset.SlidePatch
-center: ['TCGA-LUSC']
-WSI_info_list_file: dataset/WSI_info_list/TCGA-LUSC.json
-WSI_patch_ft_dir: get_feature/WSI_patch_features/{}_2K_sample_threshold/patch_ft
-WSI_patch_coor_dir: get_feature/WSI_patch_features/{}_2K_sample_threshold/patch_coor
+# dataset path
+
+
 
 H_coors: True
 # model
 model: model.intra_stage.Model 
 model_args:
-  in_channels: 512 
+  in_channels: 1792
   n_target: 1   
   k_nearest: 5 
   k_threshold: 0.1

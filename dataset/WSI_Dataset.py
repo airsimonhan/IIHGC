@@ -1,10 +1,7 @@
 from torch.utils.data import Dataset
-import os
 import torch
 import numpy as np
 import pickle
-import pandas as pd
-import random
 
 
 class SlidePatch(Dataset):
@@ -22,7 +19,7 @@ class SlidePatch(Dataset):
         self.count += 1
         fts = torch.tensor(np.load(self.data_dict[id]['ft_dir'])).float() 
         ti = torch.tensor(self.data_dict[id]['survival_time']).float()
-        survival_time = ti/365 #self.st_max #(self.st_min * (self.st_max - ti))/ (ti * (self.st_max - self.st_min)) #ti/self.st_max #  /self.st_max #
+        survival_time = ti/365  # self.st_max #(self.st_min * (self.st_max - ti))/ (ti * (self.st_max - self.st_min)) #ti/self.st_max #  /self.st_max #
         status = torch.tensor(self.data_dict[id]['status'])
         with open(self.data_dict[id]['patch_coors'], 'rb') as f:
             coors = pickle.load(f)
@@ -39,7 +36,6 @@ class SlidePatch(Dataset):
             return fts, survival_time, status, coors, attr, id
         else:
             return fts, survival_time, status, coors, id
-
 
     def __len__(self) -> int:
         return len(self.id_list)
