@@ -8,6 +8,8 @@ In this repository, we provide the training code for Intra-Hypergraph and Inter-
   <figcaption>(a) Multi-level medical information and corresponding correlations. Each subject contains multi-level medical information, such as intra-correlation at the cell and tumor level, and the inter-correlation at the group level. (b) Existing graph-based and MIL-based WSI analysis methods. (c) Different hypergraph modeling methods for WSI, the boundary-wise topological hypergraph models the boundary of WSI as hyperedges, the Spatial-wise Topological hypergraph considers the location interaction of patches as hyperedges, and the global-feature semantic hypergraph computes the feature distance to model the hyperedges.</figcaption>
 </figure>
 
+
+
 <figure>
   <img src="images/pipiline.png" alt="pipeline">
   <figcaption>The pipeline of inter-intra hypergraph computation framework.</figcaption>
