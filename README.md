@@ -2,19 +2,20 @@ This repository contains the source for the paper `Inter-Intra Hypergraph Comput
 
 # Introduction  
 In this repository, we provide the training code for Intra-Hypergraph and Inter-Hypergraph models, along with various methods for hypergraph structure modeling. The dataset includes a sample list from publicly available datasets, which can be downloaded directly from TCGA.
-
+<br>
 <figure>
   <img src="images/intro.png" alt="introduction">
   <figcaption>(a) Multi-level medical information and corresponding correlations. Each subject contains multi-level medical information, such as intra-correlation at the cell and tumor level, and the inter-correlation at the group level. (b) Existing graph-based and MIL-based WSI analysis methods. (c) Different hypergraph modeling methods for WSI, the boundary-wise topological hypergraph models the boundary of WSI as hyperedges, the Spatial-wise Topological hypergraph considers the location interaction of patches as hyperedges, and the global-feature semantic hypergraph computes the feature distance to model the hyperedges.</figcaption>
 </figure>
 
-
+<br><br>
 
 <figure>
   <img src="images/pipiline.png" alt="pipeline">
   <figcaption>The pipeline of inter-intra hypergraph computation framework.</figcaption>
 </figure>
 
+<br>
 
 ## Training Data Structure  
 - DIR: config
@@ -28,7 +29,7 @@ In this repository, we provide the training code for Intra-Hypergraph and Inter-
 # Training
 
 ### 1. Feature Extraction
-This script will generata three types of file: `sampled_vis`, `patch_ft`, and `patch_coor`.
+This script will generate three types of files: `sampled_vis`, `patch_ft`, and `patch_coor`.
 ```bash
 WSI_sample_patch.py
 ```
