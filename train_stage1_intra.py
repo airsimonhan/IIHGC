@@ -121,7 +121,7 @@ class Processor:
 
             weights = torch.load(weights_path, weights_only=True)
             weights = OrderedDict(
-                [(k.split('module.')[-1], v.cuda(self.output_device)) for k, v in weights.items()]
+                [['module.' + k, v.cuda(self.output_device)] for k, v in weights.items()]
             )
 
             self.model.load_state_dict(weights, strict=False)
@@ -384,6 +384,8 @@ class Processor:
 
             if i > 0:
                 self._reset_model_and_optimizer()
+                self.best_i_fold_c_index = 0
+                self.best_i_fold_c_index_epoch = 0
 
             for epoch in range(self.arg.start_epoch, self.arg.num_epoch):
                 save_model = self._should_save_model(epoch)
@@ -467,8 +469,8 @@ class Processor:
         self.print_log('Done.\n')
 
     def _reset_model_and_optimizer(self):
-        self.load_model()
-        self.load_optimizer()
+       self._initialize_model(i=0)
+        self._initialize_optimizer()
         self.model = self.model.cuda(self.output_device)
         self.best_c_index = 0
         self.best_epoch = 0
@@ -521,7 +523,7 @@ def get_parser():
     parser.add_argument('--ignore-weights', type=str, default=[], nargs='+', help='')
 
     # test phase
-    parser.add_argument('--weights', default='work_dir/intra_stage/tcga_lusc/', help='initialization')
+    parser.add_argument('--weights', default=None, help='initialization')
 
     # optim
     parser.add_argument('--device', type=int, default=[0], nargs='+', help='the indexes of GPUs')
