@@ -838,7 +838,7 @@ class Processor:
 
         self.inter_model.load_state_dict(inter_weights)
         self.arg.print_log = False
-        c_index = self.eval(epoch=0, i_fold=i_fold)[0]
+        c_index = self.eval(epoch=0, i_fold=i_fold)
         self.arg.print_log = True
         return c_index
 
@@ -921,12 +921,12 @@ class Processor:
             # Summarize
             for i, best_c_index_values in enumerate(n_fold_val_best_c_index):
                 self.print_log(
-                    f'n_fold: {i}, inter best c-index: {best_c_index_values[1]} (intra best: {best_c_index_values[0]})'
+                   f'n_fold: {i}, inter best c-index: {best_c_index_values[1][1]} (intra best: {best_c_index_values[1][0]})'
                 )
 
-            mean_intra = np.mean([x[0] for x in n_fold_val_best_c_index])
-            mean_inter = np.mean([x[1] / 100.0 for x in n_fold_val_best_c_index])
-            std_inter = np.std([x[1] / 100.0 for x in n_fold_val_best_c_index])
+            mean_intra = np.mean([x[1][0] for x in n_fold_val_best_c_index])
+            mean_inter = np.mean([x[1][1] / 100.0 for x in n_fold_val_best_c_index])
+            std_inter = np.std([x[1][1] / 100.0 for x in n_fold_val_best_c_index])
             self.print_log(
                 f'{self.arg.n_fold}_fold: inter best mean intra_c-index: {mean_intra}, '
                 f'best mean inter_c-index: {mean_inter}, best std inter_c-index: {std_inter}'
