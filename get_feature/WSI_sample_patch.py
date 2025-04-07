@@ -105,7 +105,7 @@ def get_parser():
     #file_dir
     parser.add_argument('--data_root', default='/pathology_data/' , help='the depth of resnet')
     parser.add_argument('--WSI_info_file',default='../dataset/WSI_info_list/TCGA-LUSC.json',help='the dir of WSI')
-    parser.add_argument('--save_dir',default='WSI_patch_features/TCGA-LUSC._2K_sample_threshold',help='the dir of results')
+    parser.add_argument('--save_dir',default='WSI_patch_features/TCGA-LUSC_2K_sample_threshold',help='the dir of results')
     #sample patch
     parser.add_argument('--num_sample', default=2000, help='the num of sample patch')
     parser.add_argument('--sampled_vis', default=True, help='visualization of sample results')
@@ -200,7 +200,7 @@ def extract_ft(slide_dir: str, patch_coors, depth=18, batch_size=16):
     slide = openslide.open_slide(slide_dir)
 
 
-    model_ft = ResNetFeature(depth=depth, pooling=True, pretrained=True) #
+    model_ft = ResNetFeature(depth=depth, pooling=True, pretrained=True)  # you can change the backbone as you want (EfficientNet, UNI).
     model_ft = model_ft.to(device)
     model_ft.eval()
 
