@@ -1,5 +1,7 @@
 This repository contains the source for the paper `Inter-Intra Hypergraph Computation for Survival Prediction on Whole Slide Images` accepted by `IEEE TPAMI` by `Xiangmin Han`, `Huijian Zhou`, `Zhiqiang Tian`, `Shaoyi Du`, `Yue Gao`.
 
+Click the [link](https://ieeexplore.ieee.org/document/10948362) to access the paper.
+
 # Introduction  
 In this repository, we provide the training code for Intra-Hypergraph and Inter-Hypergraph models, along with various methods for hypergraph structure modeling. The dataset includes a sample list from publicly available datasets, which can be downloaded directly from TCGA.
 <br>
