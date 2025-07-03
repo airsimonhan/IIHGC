@@ -1,4 +1,12 @@
-This repository contains the source for the paper `Inter-Intra Hypergraph Computation for Survival Prediction on Whole Slide Images` accepted by `IEEE TPAMI` by `Xiangmin Han`, `Huijian Zhou`, `Zhiqiang Tian`, `Shaoyi Du`, `Yue Gao`.
+<div align="center">
+<h2>Inter-Intra Hypergraph Computation for Survival Prediction on Whole Slide Images</h2>
+
+<p align="center">
+  <b>Xiangmin Han, Huijian Zhou, Zhiqiang Tian, Shaoyi Du, Yue Gao<sup>*</sup></b>
+</p>
+
+**IEEE Transactions on Pattern Analysis and Machine Intelligence (IEEE TPAMI), 47(7): 6006--6021, 2025**
+</div>
 
 Click the [link](https://ieeexplore.ieee.org/document/10948362) to access the paper.
 
@@ -54,12 +62,17 @@ python train_stage2_inter.py
 # Citation
 If you find our work useful in your research, please consider citing:
 ```bibtex
-@article{han2025iihgc,
-  title={Inter-intra hypergraph computation for survival prediction on whole slide images},
-  author={Xiangmin, Han and Huijian, Zhou and Zhiqiang, Tian and Shaoyi, Du and Yue, Gao},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-  year={2025},
-  publisher={IEEE}
+@article{han_2025_inter,
+  title = {Inter-intra hypergraph computation for survival prediction on whole slide images},
+  author = {Han, Xiangmin and Zhou, Huijian and Tian, Zhiqiang and Du, Shaoyi and Gao, Yue},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year = {2025},
+  month = jul,
+  volume = {47},
+  number = {7},
+  pages = {6006--6021},
+  publisher = {IEEE},
+  doi = {10.1109/TPAMI.2025.3557391},
 }
 ```
 
